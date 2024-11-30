@@ -34,6 +34,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: ./docker/Dockerfile_Service
+          context: .
+          file: ./docker/Dockerfile_Service.yml
           push: ${{ github.event_name != 'pull_request' }}
           tags: aiastia/bustag:antmedia
