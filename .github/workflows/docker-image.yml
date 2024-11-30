@@ -20,8 +20,10 @@ jobs:
       - name: Get Latest Version of Ant Media Server Community Edition
         id: get_latest_version
         run: |
+          # 获取最新的发布版本号
           LATEST_RELEASE=$(curl -s https://api.github.com/repos/ant-media/Ant-Media-Server/releases/latest | jq -r '.tag_name')
-          DOWNLOAD_URL="https://github.com/ant-media/Ant-Media-Server/releases/download/${LATEST_RELEASE}/ant-media-server-community-${LATEST_RELEASE#*-}.zip"
+          VERSION=${LATEST_RELEASE#ams-v} # 提取版本号数字部分
+          DOWNLOAD_URL="https://github.com/ant-media/Ant-Media-Server/releases/download/${LATEST_RELEASE}/ant-media-server-community-${VERSION}.zip"
           echo "Latest release: $LATEST_RELEASE"
           echo "Download URL: $DOWNLOAD_URL"
           echo "download_url=$DOWNLOAD_URL" >> $GITHUB_ENV
