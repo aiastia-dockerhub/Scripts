@@ -45,6 +45,6 @@ jobs:
           context: .
           file: docker/Dockerfile_Process
           push: ${{ github.event_name != 'pull_request' }}
-          tags: aiastia/antmedia
+          tags: aiastia/antmedia:latest
           build-args: |
             AntMediaServer=ant-media-server-community.zip
